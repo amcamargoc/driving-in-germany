@@ -1,0 +1,85 @@
+{
+  "name": "2.7.01-138",
+  "_id": "5c61bf1ee12e20001b603300",
+  "text": {
+      "de": "Sie fahren ein reines Elektrofahrzeug in einem Wohngebiet. Worauf sollten Sie sich aufgrund Ihrer geringen Fahrgeräusche einstellen?",
+      "ar": "تقود مركبة كهربائية خالصة في منطقة سكنية. ما الذي ينبغي أن تهيىء نفسك له بسبب انخفاض ضجيج السير لديك؟",
+      "en": "You are driving a purely electric vehicle in a residential area. What should you be aware of due to your lower engine noise?",
+      "es": "Está conduciendo un vehículo totalmente eléctrico en una zona residencial. ¿Para qué debe estar preparado, debido a su bajo nivel de ruido al conducir?",
+      "fr": "Vous conduisez un véhicule entièrement électrique dans une zone résidentielle. À quoi devez-vous vous tenir prêt en raison du bruit réduit du véhicule?",
+      "gr": "Οδηγείτε ένα αμιγώς ηλεκτροκίνητο όχημα σε κατοικημένη περιοχή. Τι θα πρέπει να αναμένετε λόγω του χαμηλού θορύβου οδήγησης;",
+      "hr": "Vi upravljate vozilom koje se kreće isključivo na elektropogon u stambenoj četvrti. Na što biste trebali biti spremni, obzirom da vozilo nije glasno kao obično?",
+      "it": "La guida di un veicolo interamente elettrico è molto meno rumorosa. Pertanto, a cosa si deve fare attenzione guidando un veicolo interamente elettrico in un centro abitato?",
+      "pl": "Prowadzą Państwo pojazd elektryczny na obszarze zamieszkania. Na co powinieneś być przygotowany ze względu na niski poziom hałasu podczas jazdy?",
+      "pt": "Ao conduzir um veículo exclusivamente elétrico numa zona residencial, com que deve contar devido ao ruído reduzido emitido pelo seu veículo?",
+      "ro": "Conduceți un vehicul acționat exclusiv de un motor electric într-o zonă rezidențială. La ce trebuie să vă așteptați dat fiind faptul că rulați silențios?",
+      "ru": "Вы едете на электромобиле в жилой зоне. Что Вы должны принять во внимание из-за Вашего малошумного двигателя?",
+      "tr": "Bir konut bölgesinde salt elektrikli bir araçla yol alıyorsunuz. Sürüş gürültünüz düşük olduğundan kendinizi neye göre ayarlamalısınız?"
+  },
+  "categories": [
+      "B"
+  ],
+  "number": "2.7.01-138",
+  "type": "special",
+  "points": 3,
+  "attemptsCount": 0,
+  "world": {
+      "_id": "66d78c9acfb3c85bd3f0363d",
+      "title": {
+          "de": "Technische Bedingungen/umweltbewusster Umgang mit Kraftfahrzeugen",
+          "gr": "Τεχνικές συνθήκες / περιβάλλον-συνειδητή χρήση των μηχανοκίνητων οχημάτων",
+          "en": "Technical conditions / environment-conscious use of motor vehicles",
+          "es": "Condiciones técnicas / uso-entorno consciente de vehículos de motor",
+          "fr": "Conditions techniques / utilisation de l'environnement conscient des véhicules à moteur",
+          "hr": "Tehnički uvjeti / ekološki svjesna uporaba motornih vozila",
+          "it": "Condizioni tecniche / uso ambiente consapevole dei veicoli a motore",
+          "pl": "Warunki techniczne / środowisko świadome korzystanie z pojazdów silnikowych",
+          "pt": "Condições técnicas / uso consciência ambiental dos veículos a motor",
+          "ro": "Condiții tehnice / utilizare conștient-mediu al autovehiculelor",
+          "ru": "Технические условия / среда-сознательное использование автотранспортных средств",
+          "tr": "Teknik koşulları / motorlu taşıtlarla çevreci sürme şekilleri",
+          "ar": "الشروط الفنية / استخدام واعية بيئيا للسيارات"
+      },
+      "icon": "tree",
+      "country": "de",
+      "color": "#fec8c9",
+      "licenses": [
+          "B",
+          "C",
+          "D",
+          "C1E",
+          "DE"
+      ],
+      "theme": {
+          "de": "Thema 13",
+          "gr": "Θέμα 13",
+          "en": "Topic 13",
+          "es": "Tema 13",
+          "fr": "Thème 13",
+          "hr": "Tema 13",
+          "it": "Argomento 13",
+          "pl": "Temat 13",
+          "pt": "Tema 13",
+          "ro": "Tema 13",
+          "ru": "Тема 13",
+          "tr": "Tema 13",
+          "ar": "الموضوع 13"
+      },
+      "type": "special",
+      "name": "de-2024-10-01-Series-Schools-DE-transitional-2024-04-01-T05-topic-13",
+      "orderingNumber": 5,
+      "dataVersion": 0,
+      "mediaSize": 29717340,
+      "version": "de-2024-10-01-Series-Schools-DE-transitional-2024-04-01",
+      "mediaUri": "offline/de/de-2024-04-01-Series-Schools-DE-regular--T05-topic-13.zip",
+      "transitionFrom": {
+          "world": {
+              "_id": "65e18bbf87ac720baceac6f8",
+              "name": "de-2024-04-01-Series-Schools-DE-regular--T05-topic-13",
+              "country": "de"
+          }
+      },
+      "createdAt": 1725402266,
+      "semanticId": "schools-G-T13"
+  }
+}
