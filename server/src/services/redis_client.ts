@@ -1,7 +1,7 @@
 import redis from 'redis';
 
 export class RedisClient {
-  private client = this.constructor();
+  private client;
 
 
   constructor() {
