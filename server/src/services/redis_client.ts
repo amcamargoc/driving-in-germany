@@ -1,4 +1,5 @@
 import redis from 'redis';
+import fs from 'fs'
 
 export class RedisClient {
   private client;
@@ -95,5 +96,25 @@ export class RedisClient {
       console.error('Error closing Redis connection:', err);
       throw err;
     }
+  }
+
+  async storeAsJSON () {
+    const keys = await this.client.keys('*');
+    const allHashes:Array<Object>= [];
+
+    for (const key of keys) {
+      // Check if the key is a hash
+
+        // Get all fields and values of the hash
+
+        const hash = await this.client.get(key);
+
+        // Store the hash in the array
+        allHashes.push(JSON.parse(hash));
+
+    }
+
+    // Write the array of hashes to a JSON file
+    fs.writeFileSync('hashes.json', JSON.stringify(allHashes));
   }
 }

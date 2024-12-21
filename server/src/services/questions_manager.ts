@@ -17,6 +17,12 @@ export class QuestionsManager {
     return await this.fetchAndStoreQuestions()
   }
 
+  async storeAsJSON() {
+    await this.redisClient.initialize()
+
+    await this.redisClient.storeAsJSON()
+  }
+
   private async fetchAndStoreQuestions() {
     const questions = await this.fetcher.fetchQuestions()
 
