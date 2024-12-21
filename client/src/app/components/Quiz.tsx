@@ -1,66 +1,61 @@
 import React from 'react';
 import Question from './Question';
-import InputAnswer  from './inputAnswer';
-import MultichoiceAnswer from './multichoiceAnswer';
-import { getTextForLanguage } from '../helpers/languageHelper';
+// import InputAns wer  from './inputAnswer';
+// import MultichoiceAnswer from './multichoiceAnswer';
 
-interface Option {
-  correct: boolean;
-  name: string;
-  text: { [key: string]: string };
-}
+// import { getTextForLanguage } from '../helpers/languageHelper';
 
-interface Answer {
-  kind: string;
-  label1: { [key: string]: string };
-  label3: { [key: string]: string };
-  categories: string[];
-  country: string;
-  answer: string;
-  options?: Option[];
-  comment: { [key: string]: string };
-  video?: string;
-  videoThumbStart?: string;
-  videoThumbEnd?: string;
-}
+import { IQuestion } from './../interfaces/IQuestion'
+import { IAnswers } from './../interfaces/IAnswers'
+import { LanguageCode } from '../interfaces/ILanguages';
 
-interface IQuestion {
-  text: { [key: string]: string };
-  subtext?: { [key: string]: string };
-}
-
-interface IQuizData {
+interface IQuestionData {
   question: IQuestion;
-  answers: Answer[];
+  answers: Array<IAnswers>;
 }
 
 interface QuizProps {
-  data: IQuizData;
-  language: string;
+  data: Array<IQuestionData>;
+  language: LanguageCode;
 }
 
 const Quiz: React.FC<QuizProps> = ({ data, language }) => {
-  const { question, answers } = data;
 
   return (
-    <div className="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-lg">
-      <Question question={question} language={language} />
+    <ul className="space-y-4">
 
-      <div className="space-y-6">
-        {answers.map((answer, index) => {
-          if (answer.kind === 'input') {
-            return <InputAnswer key={index} answer={answer} language={language} />;
-          } else if (answer.kind === 'multichoice') {
-            return <MultichoiceAnswer key={index} answer={answer} language={language} />;
-          }
-          return null; // In case of unsupported answer kind
-        })}
-      </div>
 
-      <div className="mt-6">
-        <p className="text-sm text-gray-500">{getTextForLanguage(question.subtext || {}, language)}</p>
-      </div>
-    </div>
+        {
+          data.map((data) =>  {
+            return <Question key={data.question._id} question={data.question} language={language} />
+
+
+
+              {/* NEXT ITERATION */}
+
+
+              {/* <div className="mt-6">
+                <p className="text-sm text-gray-500">{getTextForLanguage(question.subtext || {}, language)}</p>
+              </div>
+              data.answers.map((answer) => {
+              if (answer.kind == InputType ) {
+                return <InputAnswer key={index} answer={answer} language={language} />;
+              } else if (answer.kind === MultichoiceType) {
+                return <MultichoiceAnswer key={index} answer={answer} language={language} />;
+              } else {
+                console.log('unsopported')
+                return null; // In case of unsupported answer kind
+              }})
+
+
+              */}
+
+          })
+        }
+
+
+
+    </ul>
   );
 };
 

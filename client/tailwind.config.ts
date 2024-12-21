@@ -13,6 +13,9 @@ export default {
         foreground: "var(--foreground)",
       },
     },
+    container: {
+      padding: '2rem',
+    },
   },
   plugins: [],
 } satisfies Config;

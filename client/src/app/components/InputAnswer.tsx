@@ -1,5 +1,5 @@
 import React from 'react';
-import { getTextForLanguage } from '@/helpers/languageHelper';
+import { getTextForLanguage } from '@/app/helpers/languageHelper';
 
 interface InputAnswerProps {
   answer: {

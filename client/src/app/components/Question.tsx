@@ -1,22 +1,21 @@
 import React from 'react';
-import { getTextForLanguage } from '@/helpers/languageHelper';
+import { getTextForLanguage } from '@/app/helpers/languageHelper';
+
+import { IQuestion } from './../interfaces/IQuestion'
+import { LanguageCode } from '../interfaces/ILanguages';
+
 
 interface QuestionProps {
-  question: {
-    text: { [key: string]: string };
-    subtext?: { [key: string]: string };
-  };
-  language: string;
+  question: IQuestion;
+  language: LanguageCode;
 }
 
 const Question: React.FC<QuestionProps> = ({ question, language }) => {
-  const { text, subtext } = question;
 
   return (
-    <div className="mb-6">
-      <h2 className="text-xl font-semibold">{getTextForLanguage(text, language)}</h2>
-      {subtext && <p className="text-md text-gray-500">{getTextForLanguage(subtext, language)}</p>}
-    </div>
+    <li key={question._id} className="p-4 bg-white rounded-lg shadow-md border border-gray-200 hover:bg-gray-50 transition duration-200 ease-in-out">
+        <p className="text-lg font-medium text-gray-800">{getTextForLanguage(question.text, language)}</p>
+    </li>
   );
 };
 
