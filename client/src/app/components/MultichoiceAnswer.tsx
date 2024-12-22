@@ -1,25 +1,17 @@
 import React from 'react';
 import { getTextForLanguage } from '../helpers/languageHelper';
+import { IAnswers } from '../interfaces/IAnswers';
+import { useQuestionContext } from '../context/QuestionContext';
 
-interface Option {
-  correct: boolean;
-  name: string;
-  text: { [key: string]: string };
-}
+
 
 interface MultichoiceAnswerProps {
-  answer: {
-    options: Option[];
-    comment: { [key: string]: string };
-    video?: string;
-    videoThumbStart?: string;
-    videoThumbEnd?: string;
-  };
-  language: string;
+ answer: IAnswers
 }
 
-const MultichoiceAnswer: React.FC<MultichoiceAnswerProps> = ({ answer, language }) => {
+const MultichoiceAnswer: React.FC<MultichoiceAnswerProps> = ({ answer }) => {
   const { options, comment, video, videoThumbStart, videoThumbEnd } = answer;
+  const { language } = useQuestionContext();
 
   return (
     <div className="mb-6">
@@ -47,7 +39,7 @@ const MultichoiceAnswer: React.FC<MultichoiceAnswerProps> = ({ answer, language 
       )}
 
       <div className="text-sm text-gray-600 mb-2">{getTextForLanguage(comment, language)}</div>
-      
+
       {options.map((option, index) => (
         <div key={index} className="mb-2 flex items-center">
           <input

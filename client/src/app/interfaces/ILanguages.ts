@@ -26,7 +26,7 @@ export interface ILanguages {
   [LanguageCode.PL]: string;
   [LanguageCode.PT]: string;
   [LanguageCode.RO]: string;
-  [LanguageCode.RU  ]: string;
+  [LanguageCode.RU]: string;
   [LanguageCode.TR]: string;
 }
 

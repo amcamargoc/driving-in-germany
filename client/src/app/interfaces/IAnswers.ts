@@ -21,11 +21,13 @@ export interface IAnswers {
   number: string;
   text: ILanguages;
   subtext: ILanguages;
+  label1?: ILanguages;
+  label3?: ILanguages;
   points: number;
   type: string;
   version: string;
   schema: string;
-  meta: {
+  meta?: {
     amtlich: string;
     annex: string;
   };
@@ -34,6 +36,8 @@ export interface IAnswers {
   videoThumbStart?: string;
   createdAt: number;
   worldIds: string[];
-  comment: Comment;
+  comment: ILanguages;
+  structures: string[]
   expireAt: number;
+
 }

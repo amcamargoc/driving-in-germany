@@ -1,20 +1,28 @@
 import React from 'react';
+import { useRouter } from 'next/navigation'
+
 import { getTextForLanguage } from '@/app/helpers/languageHelper';
 
-import { IQuestion } from './../interfaces/IQuestion'
-import { LanguageCode } from '../interfaces/ILanguages';
+import { useQuestionContext } from '../context/QuestionContext';
+import { IQuestionData } from '../interfaces/IQuestionData';
 
 
 interface QuestionProps {
-  question: IQuestion;
-  language: LanguageCode;
+  questionData: IQuestionData
 }
 
-const Question: React.FC<QuestionProps> = ({ question, language }) => {
+const Question: React.FC<QuestionProps> = ({ questionData }) => {
+  const router = useRouter()
+  const { setSelectedQuestion, language } = useQuestionContext();
+
+  const handleClick = () => {
+    setSelectedQuestion(questionData);
+    router.push(`/questions/${questionData.question._id}`)
+  };
 
   return (
-    <li key={question._id} className="p-4 bg-white rounded-lg shadow-md border border-gray-200 hover:bg-gray-50 transition duration-200 ease-in-out">
-        <p className="text-lg font-medium text-gray-800">{getTextForLanguage(question.text, language)}</p>
+    <li key={questionData.question._id}  onClick={handleClick} className="p-4 bg-white rounded-lg shadow-md border border-gray-200 hover:bg-gray-50 transition duration-200 ease-in-out">
+      <p className="text-lg font-medium text-gray-800">{getTextForLanguage(questionData.question.text, language)}</p>
     </li>
   );
 };
