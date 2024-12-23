@@ -50,7 +50,7 @@ const MultichoiceAnswer: React.FC<MultichoiceAnswerProps> = ({ answer }) => {
             className="h-4 w-4 text-blue-500 focus:ring-blue-500"
           />
           <label htmlFor={option.name} className="ml-2">
-            <span className="font-medium">{option.name}</span> - {getTextForLanguage(option.text, language)}
+            <span className="font-medium">{option.name}</span> {getTextForLanguage(option.text, language)}
           </label>
         </div>
       ))}
