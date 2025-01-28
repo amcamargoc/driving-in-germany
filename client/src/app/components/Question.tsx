@@ -11,17 +11,21 @@ interface QuestionProps {
   questionData: IQuestionData
 }
 
+const PATH = 'questions/'
+
 const Question: React.FC<QuestionProps> = ({ questionData }) => {
   const router = useRouter()
   const { setSelectedQuestion, language } = useQuestionContext();
+  const questionId = questionData.question._id
 
   const handleClick = () => {
     setSelectedQuestion(questionData);
-    router.push(`/questions/${questionData.question._id}`)
+
+    router.push(`${PATH}/${questionId}`)
   };
 
   return (
-    <li key={questionData.question._id}  onClick={handleClick} className="p-4 bg-white rounded-lg shadow-md border border-gray-200 hover:bg-gray-50 transition duration-200 ease-in-out">
+    <li key={questionId}  onClick={handleClick} className="p-4 bg-white rounded-lg shadow-md border border-gray-200 hover:bg-gray-50 transition duration-200 ease-in-out">
       <p className="text-lg font-medium text-gray-800">{getTextForLanguage(questionData.question.text, language)}</p>
     </li>
   );

@@ -1,12 +1,12 @@
-"use client"
+"use client" //TODO: why client? do u want to let the job of processing this page to the client? CEO disvantage?
 import { useRouter } from 'next/navigation';
 
-import { useQuestionContext } from './../../context/QuestionContext';
+import { useQuestionContext } from '../../context/QuestionContext';
 
-import { IQuestion } from './../../interfaces/IQuestion'
-import { LanguageCode } from './../../interfaces/ILanguages';
+import { IQuestion } from '../../interfaces/IQuestion'
+import { LanguageCode } from '../../interfaces/ILanguages';
 
-import LanguageSwitcher from './../../components/LanguageSwitcher';
+import LanguageSwitcher from '@/app/components/LanguageSwitcher';
 import QuestionDetails from '@/app/components/QuestionDetails';
 
 
