@@ -1,33 +1,32 @@
 import React from 'react';
-import { useRouter } from 'next/navigation'
+import Link from 'next/link';
 
 import { getTextForLanguage } from '@/app/helpers/languageHelper';
 
-import { useQuestionContext } from '../context/QuestionContext';
 import { IQuestionData } from '../interfaces/IQuestionData';
 
-
 interface QuestionProps {
-  questionData: IQuestionData
+  questionData: IQuestionData,
+  language: string
 }
 
-const PATH = 'questions/'
-
-const Question: React.FC<QuestionProps> = ({ questionData }) => {
-  const router = useRouter()
-  const { setSelectedQuestion, language } = useQuestionContext();
+const Question: React.FC<QuestionProps> = ({ questionData, language }) => {
   const questionId = questionData.question._id
-
-  const handleClick = () => {
-    setSelectedQuestion(questionData);
-
-    router.push(`${PATH}/${questionId}`)
-  };
+  const QUESTION_PATH = `questions/${questionId}`
 
   return (
-    <li key={questionId}  onClick={handleClick} className="p-4 bg-white rounded-lg shadow-md border border-gray-200 hover:bg-gray-50 transition duration-200 ease-in-out">
-      <p className="text-lg font-medium text-gray-800">{getTextForLanguage(questionData.question.text, language)}</p>
-    </li>
+    <Link
+      href={{ pathname: QUESTION_PATH }}
+      key={questionId}
+    >
+      <li className='text-gray-900 divide-gray-200 dark:text-white dark:divide-gray-700 cursor-pointer '>
+        <div className="flex flex-col pb-3">
+          <p className="text-lg font-medium text-gray-900">
+            {getTextForLanguage(questionData.question.text, language)}
+          </p>
+        </div>
+      </li>
+    </Link>
   );
 };
 

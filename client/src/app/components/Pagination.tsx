@@ -9,7 +9,10 @@ interface PaginationProps {
 const Pagination = ({ totalPages }: PaginationProps) => {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const currentPage = parseInt(searchParams.get("page") || "1", 10);
+  let currentPage = parseInt(searchParams.get("page") || "1", 10);
+  if (!currentPage || currentPage >  totalPages || currentPage < 1) {
+    currentPage = 1
+  }
 
   const goToPage = (page: number) => {
     if (page >= 1 && page <= totalPages) {
@@ -23,6 +26,7 @@ const Pagination = ({ totalPages }: PaginationProps) => {
     const pages = [];
     const prevPageOffset = currentPage - 2
     const nextPageOffset = currentPage + 2
+
     for (let i = Math.max(1, prevPageOffset); i <= Math.min(totalPages, nextPageOffset); i++) {
       pages.push(i);
     }
