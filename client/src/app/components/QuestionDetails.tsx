@@ -1,5 +1,4 @@
 import { useRouter } from 'next/navigation';
-import { useQuestionContext } from '../context/QuestionContext';
 import { getTextForLanguage } from '@/app/helpers/languageHelper';
 import MultichoiceAnswer from './MultichoiceAnswer';
 import InputAnswer from './InputAnswer';
@@ -18,15 +17,7 @@ const renderAnswerOptions = (answers: IAnswers) => {
 }
 
 const QuestionDetails: React.FC = () => {
-  const { selectedQuestion, language } = useQuestionContext();
   const router = useRouter();
-
-  if (!selectedQuestion) {
-    // Redirect or show an error if there's no selected question
-    // router.push('/');
-    return <p>NOT FOUND</p>;
-  }
-  console.log(selectedQuestion)
 
   return (
     <div className="p-6">

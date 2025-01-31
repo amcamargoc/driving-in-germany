@@ -1,13 +1,10 @@
-"use client" //TODO: why client? do u want to let the job of processing this page to the client? CEO disvantage?
 import { useRouter } from 'next/navigation';
-
-import { useQuestionContext } from '../../context/QuestionContext';
 
 import { IQuestion } from '../../interfaces/IQuestion'
 import { LanguageCode } from '../../interfaces/ILanguages';
 
 import LanguageSwitcher from '@/app/components/LanguageSwitcher';
-import QuestionDetails from '@/app/components/QuestionDetails';
+// import QuestionDetails from '@/app/components/QuestionDetails';
 
 
 
@@ -20,13 +17,12 @@ interface QuestionDetailsProps{
 
 const Page: React.FC<QuestionDetailsProps> = ({ }) => {
   const router = useRouter();
-    const { language, setLanguage} = useQuestionContext();
 
   return (
     <div className="p-6">
       <LanguageSwitcher language={language} setLanguage={setLanguage} />
 
-      <QuestionDetails/>
+      {/* <QuestionDetails/> */}
 
       <button
         onClick={() => router.back()}
