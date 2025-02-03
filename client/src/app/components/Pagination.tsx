@@ -1,8 +1,7 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa"; // Import icons
 
 interface PaginationProps {
   totalPages: number;
@@ -11,17 +10,9 @@ interface PaginationProps {
 const Pagination = ({ totalPages }: PaginationProps) => {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const [currentPage, setCurrentPage] = useState(1);
 
-  useEffect(() => {
-    const page = parseInt(searchParams.get("page") || "1", 10);
-
-    if (!page || page > totalPages || page < 1) {
-      setCurrentPage(1);
-    } else {
-      setCurrentPage(page);
-    }
-  }, [searchParams, totalPages]);
+  // Get the current page from the query parameters
+  const currentPage = parseInt(searchParams.get("page") || "1", 10);
 
   const goToPage = (page: number) => {
     if (page >= 1 && page <= totalPages) {
@@ -33,7 +24,7 @@ const Pagination = ({ totalPages }: PaginationProps) => {
 
   const getPageNumbers = () => {
     const pages = [];
-    const MAX_PAGES_TO_SHOW = 3; // Number of pages to show around the current page
+    const MAX_PAGES_TO_SHOW = 5; // Number of pages to show around the current page
 
     // Always show the first page
     pages.push(1);
@@ -74,26 +65,35 @@ const Pagination = ({ totalPages }: PaginationProps) => {
 
   return (
     <div className='flex flex-wrap justify-center items-center gap-2 mt-6'>
+      {/* Previous Button with Icon */}
       <button
         onClick={() => goToPage(currentPage - 1)}
         disabled={currentPage === 1}
         className="px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed transition"
       >
-        <FaChevronLeft className="w-4 h-4" />
+        <FaChevronLeft className="w-4 h-4" /> {/* Icon for Previous */}
       </button>
 
       {/* Page Numbers */}
       {getPageNumbers().map((page, index) =>
         page === "..." ? (
-          <span key={index} className="px-4 py-2 text-gray-500">
+          <button
+            key={index}
+            onClick={() => {
+              // Navigate to a middle page when ellipsis is clicked
+              const middlePage = Math.ceil((currentPage + totalPages) / 2);
+              goToPage(middlePage);
+            }}
+            className="px-4 py-2 text-gray-500 hover:bg-gray-200 rounded-md transition"
+          >
             ...
-          </span>
+          </button>
         ) : (
           <button
             key={index}
             onClick={() => goToPage(page as number)}
             className={`px-4 py-2 text-sm rounded-md hover:bg-[#D9DFC6] transition ${
-              currentPage === page ? "bg-blue-500 text-white" : "bg-gray-200"
+              currentPage === page ? "bg-gray-500 text-white" : "bg-gray-200"
             }`}
           >
             {page}
@@ -105,9 +105,9 @@ const Pagination = ({ totalPages }: PaginationProps) => {
       <button
         onClick={() => goToPage(currentPage + 1)}
         disabled={currentPage === totalPages}
-        className="px-4 py-2  bg-gray-200 text-gray-800 rounded-md hover:bg-[#D9DFC6] disabled:opacity-50 disabled:cursor-not-allowed transition"
+        className="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-gray-800 rounded-md  disabled:opacity-50 disabled:cursor-not-allowed transition"
       >
-        <FaChevronRight className="w-4 h-4" />
+        <FaChevronRight className="w-4 h-4" /> {/* Icon for Next */}
       </button>
     </div>
   );
