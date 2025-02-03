@@ -2,7 +2,7 @@
 
 import { useSearchParams, useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa"; // Import icons
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 interface PaginationProps {
   totalPages: number;
@@ -14,8 +14,8 @@ const Pagination = ({ totalPages }: PaginationProps) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    // Parse the current page from the URL query parameters
     const page = parseInt(searchParams.get("page") || "1", 10);
+
     if (!page || page > totalPages || page < 1) {
       setCurrentPage(1);
     } else {
@@ -33,7 +33,7 @@ const Pagination = ({ totalPages }: PaginationProps) => {
 
   const getPageNumbers = () => {
     const pages = [];
-    const MAX_PAGES_TO_SHOW = 5; // Number of pages to show around the current page
+    const MAX_PAGES_TO_SHOW = 3; // Number of pages to show around the current page
 
     // Always show the first page
     pages.push(1);
@@ -74,13 +74,12 @@ const Pagination = ({ totalPages }: PaginationProps) => {
 
   return (
     <div className='flex flex-wrap justify-center items-center gap-2 mt-6'>
-      {/* Previous Button with Icon */}
       <button
         onClick={() => goToPage(currentPage - 1)}
         disabled={currentPage === 1}
         className="px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300 disabled:opacity-50 disabled:cursor-not-allowed transition"
       >
-        <FaChevronLeft className="w-4 h-4" /> {/* Icon for Previous */}
+        <FaChevronLeft className="w-4 h-4" />
       </button>
 
       {/* Page Numbers */}
@@ -108,7 +107,7 @@ const Pagination = ({ totalPages }: PaginationProps) => {
         disabled={currentPage === totalPages}
         className="px-4 py-2  bg-gray-200 text-gray-800 rounded-md hover:bg-[#D9DFC6] disabled:opacity-50 disabled:cursor-not-allowed transition"
       >
-        <FaChevronRight className="w-4 h-4" /> {/* Icon for Next */}
+        <FaChevronRight className="w-4 h-4" />
       </button>
     </div>
   );

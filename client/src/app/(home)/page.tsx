@@ -39,31 +39,23 @@ export default async function Page({ searchParams } : PageProps ) {
 
   return (
     <div className="min-h-screen bg-[#EFF3EA]">
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="w-full max-w-4xl mx-auto p-6 bg-white">
-        {/* Header Section */}
-        <div className="h-full flex flex-col sm:flex-row justify-center sm:justify-between items-center mb-4">
-          {/* Title - Centered on mobile, left-aligned on larger screens */}
-          <h1 className="text-2xl font-semibold text-gray-800 text-center sm:text-left">
-            German theory test - Theoretische Führerscheinprüfung B
-          </h1>
-          {/* Language Switcher - Aligned to the right on larger screens */}
-          <div className="mt-4 sm:mt-0">
-            <LanguageSwitcher language={lang} />
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="w-full max-w-4xl mx-auto p-6 bg-white">
+          <div className="h-full flex flex-col sm:flex-row justify-center sm:justify-between items-center mb-4">
+            <h1 className="text-2xl font-semibold text-gray-800 text-center sm:text-left">
+              German theory test - Theoretische Führerscheinprüfung B
+            </h1>
+
+            <div className="mt-4 sm:mt-0">
+              <LanguageSwitcher language={lang} />
+            </div>
           </div>
+
+          <QuestionList questions={payload} language={lang} />
+
+          <Pagination totalPages={metadata.pages} />
         </div>
-
-        {/* Question List */}
-        <QuestionList questions={payload} language={lang} />
-
-        {/* Pagination */}
-        <Pagination totalPages={metadata.pages} />
       </div>
     </div>
-  </div>
-
-
-
-
   );
 };
