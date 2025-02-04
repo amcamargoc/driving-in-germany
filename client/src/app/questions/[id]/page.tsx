@@ -1,37 +1,38 @@
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/router';
+import { getRecord } from '../../../../lib/redis_client';
 
-import { IQuestion } from '../../interfaces/IQuestion'
-import { LanguageCode } from '../../interfaces/ILanguages';
+import { ISearchParams } from '../../interfaces/ISearchParams';
+import { IQuestionData } from '@/app/interfaces/IQuestionData';
+
 
 import LanguageSwitcher from '@/app/components/LanguageSwitcher';
-// import QuestionDetails from '@/app/components/QuestionDetails';
+import QuestionDetails from '@/app/components/QuestionDetails';
+import Link from 'next/link';
 
-
-
-// handle question url
-
-interface QuestionDetailsProps{
-  question: IQuestion;
-  language: LanguageCode;
+interface pageProps {
+  params: { id: string },
+  searchParams: ISearchParams
 }
 
-const Page: React.FC<QuestionDetailsProps> = ({ }) => {
-  const router = useRouter();
+export default async function Page ({ params, searchParams } : pageProps) {
+  const queryParams = await searchParams;
+  const questionId = (await params)?.id
+  const lang = String(queryParams?.lang) || "en"
+  const QUESTIONS_PATH = '/'
+  const questionPayload : IQuestionData = (await getRecord(questionId) || {}) as IQuestionData
 
   return (
     <div className="p-6">
-      <LanguageSwitcher language={language} setLanguage={setLanguage} />
+      <LanguageSwitcher language={lang} />
 
-      {/* <QuestionDetails/> */}
+      <QuestionDetails questionData={questionPayload} language={lang} />
 
-      <button
-        onClick={() => router.back()}
-        className="mt-6 px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700"
-      >
-        Back
-      </button>
+      <Link href={{ pathname: QUESTIONS_PATH, query: { ...queryParams } }} >
+        <li className='m-2 p-3 bg-[#FFFDF0] rounded-sm shadow-md b-b-2 text-base text-gray-700'>
+          Back
+        </li>
+      </Link>
     </div>
   );
 };
-
-export default Page;

@@ -14,9 +14,27 @@ function validatePage(page: number, metadata: { pages: number }) {
   }
 }
 
+export async function getRecord(key: string) {
+  try {
+    if (!redis.isOpen) {
+      await redis.connect();
+    }
+
+    const record = (await redis.get(key)) || '{}';
+    return JSON.parse(record)
+  } catch (error) {
+    console.error("Error fetching records:", error);
+  } finally {
+    if (redis.isOpen) {
+      await redis.disconnect();
+    }
+  }
+}
+
 export async function getRecords(page: number) {
   try {
-    await redis.connect();
+    if (!redis.isOpen) { await redis.connect(); }
+
     const payload = []
     const keys = await redis.keys("*");
     const totalCount = await redis.dbSize();
@@ -27,7 +45,6 @@ export async function getRecords(page: number) {
     }
 
     const pageFormatted = validatePage(page, metadata)
-    console.log(pageFormatted)
 
     let startIndex = 0
     let endIndex = MAX_PER_PAGE
@@ -37,6 +54,15 @@ export async function getRecords(page: number) {
       endIndex = (MAX_PER_PAGE * pageFormatted) + MAX_PER_PAGE
     }
 
+
+
+    // for (const key of keys) {
+    //   const value = (await redis.get(key)) || '{}';
+    //   const valueParsed =  JSON.parse(value)
+
+    //   const question = valueParsed.questions.data || valueParsed.questions
+    //   console.log(key, question.kind, question.label1, question.label2)
+    // }
     const keysToRead = keys.slice(startIndex, endIndex);
 
     for (const key of keysToRead) {
@@ -51,6 +77,6 @@ export async function getRecords(page: number) {
   } catch (error) {
     console.error("Error fetching records:", error);
   } finally {
-    await redis.disconnect();
+    if (redis.isOpen) { await redis.disconnect(); }
   }
 }

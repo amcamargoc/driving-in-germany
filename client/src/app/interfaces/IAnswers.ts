@@ -6,23 +6,35 @@ interface Option {
   text: ILanguages;
 }
 
-export type AnswerKind =  typeof InputType | typeof MultichoiceType;
-
 export const InputType = 'input' as const;
-export const MultichoiceType = 'multichoice' as const;
+export const MultipleChoiceType = 'multichoice' as const;
+export type AnswerKind =  typeof InputType | typeof MultipleChoiceType;
 
-export interface IAnswers {
+// Different kind of layouts for multichoice question type
+// 1) full text. with ?subtext
+// 2) image
+// 3) video (thumb start and end)
+
+// 4) Input. using labels
+
+interface IAnswer {
   _id: string;
   options: Option[];
   kind: AnswerKind;
+  //  Question/answer layout
+  subtext?: ILanguages;
+  label1?: ILanguages;
+  label3?: ILanguages;
+  video?: string;
+  videoThumbEnd?: string;
+  videoThumbStart?: string;
+  image?: string
+
   categories: string[];
   country: string;
   name: string;
   number: string;
   text: ILanguages;
-  subtext: ILanguages;
-  label1?: ILanguages;
-  label3?: ILanguages;
   points: number;
   type: string;
   version: string;
@@ -31,13 +43,13 @@ export interface IAnswers {
     amtlich: string;
     annex: string;
   };
-  video?: string;
-  videoThumbEnd?: string;
-  videoThumbStart?: string;
   createdAt: number;
   worldIds: string[];
   comment: ILanguages;
   structures: string[]
   expireAt: number;
+}
 
+export interface IAnswers extends IAnswer{
+  data?: IAnswer
 }

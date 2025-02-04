@@ -1,17 +1,18 @@
 import React from 'react';
+
 import { getTextForLanguage } from '../helpers/languageHelper';
+
 import { IAnswers } from '../interfaces/IAnswers';
-import { useQuestionContext } from '../context/QuestionContext';
+import { IQuestion } from '../interfaces/IQuestion';
 
-
-
-interface MultichoiceAnswerProps {
- answer: IAnswers
+interface MultipleChoiceQuestionProps {
+  answerOptions: IAnswers
+  question: IQuestion
+  language: string
 }
 
-const MultichoiceAnswer: React.FC<MultichoiceAnswerProps> = ({ answer }) => {
+const MultipleChoiceQuestion = ({ answerOptions, question, language } : MultipleChoiceQuestionProps) => {
   const { options, comment, video, videoThumbStart, videoThumbEnd } = answer;
-  const { language } = useQuestionContext();
 
   return (
     <div className="mb-6">
@@ -58,4 +59,4 @@ const MultichoiceAnswer: React.FC<MultichoiceAnswerProps> = ({ answer }) => {
   );
 };
 
-export default MultichoiceAnswer;
+export default MultipleChoiceQuestion;

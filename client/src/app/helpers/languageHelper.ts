@@ -1,7 +1,7 @@
 import { ILanguages, LanguageCode } from "../interfaces/ILanguages";
 
 
-export const getTextForLanguage = (text: ILanguages, language: string): string => {
+export const getTextForLanguage = (text: ILanguages | undefined, language: string): string => {
   if(!Object.values(LanguageCode).includes(language as LanguageCode)) {
     language = LanguageCode.EN
   }

@@ -3,24 +3,23 @@ import React from 'react';
 import { getRecords } from '../../../lib/redis_client';
 
 import { IQuestionData } from '../interfaces/IQuestionData';
+import { ISearchParams } from '../interfaces/ISearchParams';
 
 import Pagination from '@/app/components/Pagination';
 import QuestionList from '@/app/components/QuestionList';
 import LanguageSwitcher from '@/app/components/LanguageSwitcher';
 
-interface PageProps {
-  searchParams: {
-    lang?: string;
-    page?: string;
-  }
-}
 
 interface MetaData {
   total: number,
   pages: number
 }
 
-export default async function Page({ searchParams } : PageProps ) {
+interface pageProps {
+  searchParams: ISearchParams
+}
+
+export default async function Page({ searchParams } : pageProps ) {
   let payload : IQuestionData[] = []
   let metadata : MetaData = { total: 0, pages: 0 }
 
@@ -51,7 +50,7 @@ export default async function Page({ searchParams } : PageProps ) {
             </div>
           </div>
 
-          <QuestionList questions={payload} language={lang} />
+          <QuestionList questions={payload} language={lang} params={params}/>
 
           <Pagination totalPages={metadata.pages} />
         </div>

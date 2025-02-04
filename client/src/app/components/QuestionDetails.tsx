@@ -1,38 +1,38 @@
-import { useRouter } from 'next/navigation';
-import { getTextForLanguage } from '@/app/helpers/languageHelper';
-import MultichoiceAnswer from './MultichoiceAnswer';
-import InputAnswer from './InputAnswer';
-import { IAnswers, InputType, MultichoiceType } from '../interfaces/IAnswers';
+// import MultipleChoiceTypeQuestion from './MultipleChoiceTypeQuestion';
+import InputQuestion from './InputQuestion';
+import MultipleChoiceQuestion from './MultipleChoiceQuestion';
+import { InputType, MultipleChoiceType } from '../interfaces/IAnswers';
+import { IQuestionData } from '../interfaces/IQuestionData';
 
-const renderAnswerOptions = (answers: IAnswers) => {
 
-  if (answers.kind == InputType ) {
-    return <InputAnswer key={answers._id} answer={answers} />;
-  } else if (answers.kind === MultichoiceType) {
-    return <MultichoiceAnswer key={answers._id} answer={answers}  />;
-  } else {
-    console.log('unsopported')
-    return null; // In case of unsupported answer kind
-  }
+interface QuestionDetailsProps {
+  questionData: IQuestionData
+  language: string
 }
 
-const QuestionDetails: React.FC = () => {
-  const router = useRouter();
+const QuestionDetails = ({ questionData, language }: QuestionDetailsProps) => {
+  // [NOTE] data check - sometimes root key has all the values others it comes inside 'data' key
+  // { question:, answers: { data: { ...object } } } || { question: , answers: { ...object } }
+  // TODO: improve data sourcing in backend?
+  const answers = questionData.answers.data || questionData.answers
 
-  return (
-    <div className="p-6">
-      { getTextForLanguage(selectedQuestion.question.text, language) }
-      { renderAnswerOptions(selectedQuestion.answers) }
+  if (answers.kind === InputType ) {
+    return <InputQuestion
+              key={questionData.question._id}
+              answerOptions={answers}
+              question={questionData.question}
+              language={language}
+            />;
 
-
-      <button
-        onClick={() => router.back()}
-        className="mt-6 px-4 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700"
-      >
-        Back
-      </button>
-    </div>
-  );
+  } else if (answers.kind === MultipleChoiceType) {
+    return <MultipleChoiceQuestion
+              key={questionData.question._id}
+              answerOptions={answers}
+              question={questionData.question}
+              language={language} />
+  } else {
+    return null; // In case of unsupported answer kind
+  }
 };
 
 export default QuestionDetails;

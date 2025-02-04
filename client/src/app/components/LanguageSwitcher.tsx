@@ -1,4 +1,5 @@
 "use client"
+
 import { useSearchParams, useRouter } from "next/navigation";
 
 import { LanguageCode, ILanguagesUI } from '../interfaces/ILanguages';
