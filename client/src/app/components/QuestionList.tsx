@@ -16,7 +16,7 @@ const renderQuestion = (payload: IQuestionData, language: string, params: object
   const QUESTION_PATH = `questions/${questionId}`
 
   return (
-    <Link href={{ pathname: QUESTION_PATH , query: { ...params }}} scroll={true} key={questionId} >
+    <Link href={{ pathname: QUESTION_PATH , query: { ...params }}} key={questionId} >
       <li className='m-2 p-3 bg-[#FFFDF0] rounded-sm shadow-md b-b-2 text-base text-gray-700'>
         { getTextForLanguage(payload.question.text, language) }
       </li>

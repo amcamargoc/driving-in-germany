@@ -5,6 +5,7 @@ const redis = createClient();
 redis.on("error", (err) => console.error("Redis Client Error", err));
 
 const MAX_PER_PAGE = 10
+const PREFIX = 'questions-'
 
 function validatePage(page: number, metadata: { pages: number }) {
   if (page > metadata.pages || page < 1 || !page) {
@@ -15,12 +16,16 @@ function validatePage(page: number, metadata: { pages: number }) {
 }
 
 export async function getRecord(key: string) {
+
   try {
+    // I don't like this key pre-fixing add. rethinking data backend
+    const keyFormatted = `${PREFIX}${key}`
     if (!redis.isOpen) {
       await redis.connect();
     }
 
-    const record = (await redis.get(key)) || '{}';
+    const record = await redis.get(keyFormatted) || '{}'
+    console.log(record)
     return JSON.parse(record)
   } catch (error) {
     console.error("Error fetching records:", error);

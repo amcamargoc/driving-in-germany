@@ -20,7 +20,8 @@ export default async function Page ({ params, searchParams } : pageProps) {
   const questionId = (await params)?.id
   const lang = String(queryParams?.lang) || "en"
   const QUESTIONS_PATH = '/'
-  const questionPayload : IQuestionData = (await getRecord(questionId) || {}) as IQuestionData
+  const questionPayload : IQuestionData = await getRecord(questionId) as IQuestionData
+  console.log(questionPayload)
 
   return (
     <div className="p-6">

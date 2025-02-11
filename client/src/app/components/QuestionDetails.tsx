@@ -14,7 +14,10 @@ const QuestionDetails = ({ questionData, language }: QuestionDetailsProps) => {
   // [NOTE] data check - sometimes root key has all the values others it comes inside 'data' key
   // { question:, answers: { data: { ...object } } } || { question: , answers: { ...object } }
   // TODO: improve data sourcing in backend?
-  const answers = questionData.answers.data || questionData.answers
+  const answers = questionData.answers?.data || questionData.answers
+  console.log(answers)
+  console.log(questionData)
+
 
   if (answers.kind === InputType ) {
     return <InputQuestion

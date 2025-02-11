@@ -15,7 +15,7 @@ export type AnswerKind =  typeof InputType | typeof MultipleChoiceType;
 // 2) image
 // 3) video (thumb start and end)
 
-// 4) Input. using labels
+// 4) Input. using labels but could have image
 
 interface IAnswer {
   _id: string;
