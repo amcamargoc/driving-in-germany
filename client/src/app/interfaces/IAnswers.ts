@@ -29,6 +29,7 @@ interface IAnswer {
   videoThumbEnd?: string;
   videoThumbStart?: string;
   image?: string
+  answer: string;
 
   categories: string[];
   country: string;

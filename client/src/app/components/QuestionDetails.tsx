@@ -15,9 +15,6 @@ const QuestionDetails = ({ questionData, language }: QuestionDetailsProps) => {
   // { question:, answers: { data: { ...object } } } || { question: , answers: { ...object } }
   // TODO: improve data sourcing in backend?
   const answers = questionData.answers?.data || questionData.answers
-  console.log(answers)
-  console.log(questionData)
-
 
   if (answers.kind === InputType ) {
     return <InputQuestion

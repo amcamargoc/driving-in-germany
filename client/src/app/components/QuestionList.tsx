@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 
 import { IQuestionData } from '../interfaces/IQuestionData';
-
 import { getTextForLanguage } from '@/app/helpers/languageHelper';
 
 interface QuizProps {

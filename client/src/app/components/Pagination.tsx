@@ -64,7 +64,7 @@ const Pagination = ({ totalPages }: PaginationProps) => {
   };
 
   return (
-    <div className='flex flex-wrap justify-center items-center gap-2 mt-6'>
+    <div className='flex flex-wrap justify-center items-center gap-2'>
       {/* Previous Button with Icon */}
       <button
         onClick={() => goToPage(currentPage - 1)}

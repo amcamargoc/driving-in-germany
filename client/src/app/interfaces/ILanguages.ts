@@ -34,66 +34,66 @@ export const ILanguagesUI = {
   [LanguageCode.DE]: {
     code: LanguageCode.DE,
     emoji: '🇩🇪',
-    textEn: 'German'
+    text: 'German'
   },
   [LanguageCode.AR]: {
     code: LanguageCode.AR,
     emoji: '🇦🇪',
-    textEn: 'Arabic'
+    text: 'Arabic'
   },
   [LanguageCode.EN]: {
     code: LanguageCode.EN,
     emoji: '🇬🇧',
-    textEn: 'English'
+    text: 'English'
   },
   [LanguageCode.ES]: {
     code: LanguageCode.ES,
     emoji: '🇪🇸',
-    textEn: 'Spanish'
+    text: 'Spanish'
   },
   [LanguageCode.FR]: {
     code: LanguageCode.FR,
     emoji: '🇫🇷',
-    textEn: 'French'
+    text: 'French'
   },
   [LanguageCode.GR]: {
     code: LanguageCode.GR,
     emoji: '🇬🇷',
-    textEn: 'Greek'
+    text: 'Greek'
   },
   [LanguageCode.HR]: {
     code: LanguageCode.HR,
     emoji: '🇭🇷',
-    textEn: 'Croatian'
+    text: 'Croatian'
   },
   [LanguageCode.IT]: {
     code: LanguageCode.IT,
     emoji: '🇮🇹',
-    textEn: 'Italian'
+    text: 'Italian'
   },
   [LanguageCode.PL]: {
     code: LanguageCode.PL,
     emoji: '🇵🇱',
-    textEn: 'Polish'
+    text: 'Polish'
   },
   [LanguageCode.PT]: {
     code: LanguageCode.PT,
     emoji: '🇵🇹',
-    textEn: 'Portuguese'
+    text: 'Portuguese'
   },
   [LanguageCode.RO]: {
     code: LanguageCode.RO,
     emoji: '🇷🇴',
-    textEn: 'Romanian'
+    text: 'Romanian'
   },
   [LanguageCode.RU]: {
     code: LanguageCode.RU,
     emoji: '🇷🇺',
-    textEn: 'Russian'
+    text: 'Russian'
   },
   [LanguageCode.TR]: {
     code: LanguageCode.TR,
     emoji: '🇹🇷',
-    textEn: 'Turkish'
+    text: 'Turkish'
   }
 }

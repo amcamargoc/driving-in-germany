@@ -7,7 +7,6 @@ import { ISearchParams } from '../interfaces/ISearchParams';
 
 import Pagination from '@/app/components/Pagination';
 import QuestionList from '@/app/components/QuestionList';
-import LanguageSwitcher from '@/app/components/LanguageSwitcher';
 
 
 interface MetaData {
@@ -37,22 +36,17 @@ export default async function Page({ searchParams } : pageProps ) {
   }
 
   return (
-    <div className="min-h-screen bg-[#EFF3EA]">
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="w-full max-w-4xl mx-auto p-6 bg-white">
-          <div className="h-full flex flex-col sm:flex-row justify-center sm:justify-between items-center mb-4">
-            <h1 className="text-2xl font-semibold text-gray-800 text-center sm:text-left">
-              German theory test - Theoretische Führerscheinprüfung B
-            </h1>
-
-            <div className="mt-4 sm:mt-0">
-              <LanguageSwitcher language={lang} />
-            </div>
+    <div className="min-h-screen flex flex-col">
+      {/* <div className="min-h-screen w-full flex items-center justify-center py-8"> */}
+      <div className="flex-1 p-1 sm:p-2 lg:p-2">
+        <div className="w-full p-1 space-y-6"> {/* Adds consistent vertical spacing */}
+          <div className="min-h-screen">
+            <QuestionList questions={payload} language={lang} params={params}/>
           </div>
 
-          <QuestionList questions={payload} language={lang} params={params}/>
-
-          <Pagination totalPages={metadata.pages} />
+          <div className="sticky bottom-0 bg-white p-2">
+            <Pagination totalPages={metadata.pages} />
+          </div>
         </div>
       </div>
     </div>
