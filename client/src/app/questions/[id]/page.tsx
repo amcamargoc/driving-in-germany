@@ -24,7 +24,7 @@ export default async function Page ({ params, searchParams } : pageProps) {
 
   return (
     <div className="p-6">
-      <LanguageSwitcher language={lang} />
+      <LanguageSwitcher/>
 
       <QuestionDetails questionData={questionPayload} language={lang} />
 

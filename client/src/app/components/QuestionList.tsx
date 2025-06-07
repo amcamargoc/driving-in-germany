@@ -1,23 +1,24 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { IQuestionData } from '../interfaces/IQuestionData';
 import { getTextForLanguage } from '@/app/helpers/languageHelper';
+import { IQuestion } from '../interfaces/IQuestion';
 
 interface QuizProps {
-  questions: Array<IQuestionData>;
+  questions: IQuestion[];
   language: string;
   params: object
 }
 
-const renderQuestion = (payload: IQuestionData, language: string, params: object) => {
-  const questionId = payload.question._id
+const renderQuestion = (question: IQuestion, language: string, params: object) => {
+  const questionId = question.id
   const QUESTION_PATH = `questions/${questionId}`
+  const text = JSON.parse(question.multi_lang_title)
 
   return (
     <Link href={{ pathname: QUESTION_PATH , query: { ...params }}} key={questionId} >
       <li className='m-2 p-3 bg-[#FFFDF0] rounded-sm shadow-md b-b-2 text-base text-gray-700'>
-        { getTextForLanguage(payload.question.text, language) }
+        { getTextForLanguage(question.multi_lang_title, language) }
       </li>
     </Link>
   );
